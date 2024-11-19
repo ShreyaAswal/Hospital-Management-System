@@ -1,0 +1,98 @@
+.background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('./images/nitk\ logo.png'); /* Path to your background image */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper {
+    width: 85%; /* Ensures content spans across most of the screen width */
+    max-width: 1200px;
+    text-align: center;
+}
+
+.greeting {
+    margin-bottom: 10px;
+    font-size: 2.5em; /* Increased heading size */
+    font-weight: bold;
+    color: #68baba;
+    background-color: beige;
+}
+
+.title {
+    margin-bottom: 10px;
+    font-size: 2em; /* Increased heading size */
+    color:#68baba;
+    background-color: beige;
+}
+
+.doctor-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(249, 242, 236, 0.8); /* Wooden look with transparency (80% opacity) */
+    height: 0.1em; /* Reduced height of the table */
+}
+
+.doctor-table th,
+.doctor-table td {
+    border: 1px solid #ddd;
+    padding: 7px;
+    text-align: center;
+}
+
+.doctor-table th {
+    background-color: rgba(210, 166, 121, 0.9); /* Slightly darker wooden look with transparency */
+}
+
+.book-btn {
+    padding: 10px 20px;
+    background-color: #6c757d; /* Sleek classy color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-btn:hover {
+    background-color: #5a6268;
+}
+
+.history-btn {
+    padding: 15px 25px; /* Added more padding */
+    background-color: #17a2b8; /* Sleek classy color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.history-btn:hover {
+    background-color: #138496;
+}
+
+/* Ensure everything fits without scrolling */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-height: 800px) {
+    .background-wrapper {
+        justify-content: flex-start; /* Adjust for smaller screens */
+        padding-top: 20px;
+    }
+}

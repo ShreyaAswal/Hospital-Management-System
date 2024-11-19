@@ -27,7 +27,5 @@ const User = sequelize.define('User', {
     }
 });
 
-// Define associations
-// User.hasMany(MedicalHistory, { foreignKey: 'doctorId', sourceKey: 'id' });
 
 module.exports = User;

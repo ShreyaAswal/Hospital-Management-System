@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/login.css' 
 
 const Login = () => {
   const [regno, setRegNo] = useState('');
@@ -16,10 +17,7 @@ const Login = () => {
     }
 
     try {
-      // Post login details to backend to check credentials
       const { data } = await axios.post('http://localhost:5000/api/auth/login', { regno, password });
-      console.log("data" , data);
-      // If login is successful, navigate based on user role
       if (data.role === 'student') {
         navigate('/student-home');
       } else if (data.role === 'doctor') {
@@ -32,29 +30,32 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input 
-          type="text" 
-          value={regno} 
-          onChange={(e) => setRegNo(e.target.value)} 
-          placeholder="Regestration Number" 
-        />
-        <input 
-          type="password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          placeholder="Password" 
-        />
-        <button type="submit">Login</button>
-      </form>
-
-      <p>Don't have an account?</p>
-      <Link to="/signup">
-        <button>Sign Up</button>
-      </Link>
+    <div className="login-background">
+      <div className="container">
+        <h1>NITK Healthcare Portal</h1>
+        <h2>Login to your account</h2>
+        <form onSubmit={handleLogin}>
+          <input
+            type="text"
+            value={regno}
+            onChange={(e) => setRegNo(e.target.value)}
+            placeholder="Registration Number"
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account?</p>
+        <Link to="/signup">
+          <button className="signup-btn">Sign Up</button>
+        </Link>
+      </div>
     </div>
+    
   );
 };
 

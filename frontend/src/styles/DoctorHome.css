@@ -1,0 +1,52 @@
+/* Main container styling */
+.doctorhome{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('./images/nitk1.jpg'); /* Path to your background image */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.doctor-home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 8cm;
+    width: 10cm;
+    background-color: rgb(255, 255, 255,0.6);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Greeting message styling */
+  .greeting {
+    font-size: 2em;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  /* Medical entry link styling */
+  .medical-entry-link {
+    font-size: 1.2em;
+    color: white;
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .medical-entry-link:hover {
+    background-color: #45a049;
+  }
+  

@@ -1,0 +1,77 @@
+/* Main container styling */
+.history-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('./images/hcc.jpg'); /* Path to your background image */
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.medical-history-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Title styling */
+  .title {
+    text-align: center;
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* No history message styling */
+  .no-history {
+    text-align: center;
+    color: #888;
+    font-size: 1.2em;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Table styling */
+  .history-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Table header styling */
+  .history-table thead th {
+    background-color: rgba(76, 175, 80,0.8);
+    color: white;
+    padding: 12px;
+    font-size: 1.1em;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  /* Table body styling */
+  .history-table tbody tr {
+    text-align:start;
+    color: #333;
+    font-size: 1em;
+  }
+  
+  /* Table cell styling */
+  .history-table tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Alternating row color */
+  .history-table tbody tr:nth-child(even) {
+    background-color: rgb(242, 242, 242,0.9);
+  }
+  

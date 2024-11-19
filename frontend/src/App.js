@@ -16,7 +16,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/student-home" element={<StudentHome />} />
         <Route path="/doctor-home" element={<DoctorHome />} />
-        <Route path="/book-appointment/:doctorId/:studentId" element={<AppointmentBooking />} />
+        <Route path="/book-appointment/:doctorId/:studentId" element={<AppointmentBooking />} /> 
+        {/* in start- : it means that it is dynamic url, and wer can use that value using useparams() hooks */}
         <Route path="/medical-history/:studentId" element={<MedicalHistory />} />
         <Route path="/medical-entry/:doctorId" element={<MedicalEntry />} />
       </Routes>

@@ -11,7 +11,7 @@ router.post('/signup', async (req, res) => {
     if (!regno || !password || !role || !name) {
         return res.status(400).json({ message: 'Please fill all fields' });
     }
-
+0
     try {
         // Add user to database
         const newUser = await User.create({ regno, name, password, role });

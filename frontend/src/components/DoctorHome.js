@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/DoctorHome.css'; // Import the CSS file
 
 const DoctorHome = () => {
   const [userName, setUserName] = useState('');
@@ -21,10 +22,11 @@ const DoctorHome = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Hi {userName}</h1>
-      {/* Pass doctorId as a URL param */}
-      <Link to={`/medical-entry/${userId}`}>Add/Edit Medical Entry</Link>
+    <div className='doctorhome'>
+      <div className="doctor-home-container">
+        <h1 className="greeting">Hi, Dr. {userName}!</h1>
+        <Link to={`/medical-entry/${userId}`} className="medical-entry-link">Add/Edit Medical Entry</Link>
+      </div>
     </div>
   );
 };

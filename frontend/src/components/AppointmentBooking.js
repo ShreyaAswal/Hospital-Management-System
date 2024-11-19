@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import '../styles/appointmentBooking.css'; // Import the CSS file
 
 const AppointmentBooking = () => {
   const [selectedDate, setSelectedDate] = useState('');
@@ -8,8 +9,8 @@ const AppointmentBooking = () => {
   const [bookedSlots, setBookedSlots] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState('');
   const [doctorName, setDoctorName] = useState('');
-  const { doctorId } = useParams(); // Get doctorId from route
-  const { studentId } = useParams(); // Get studentId from route
+  const { doctorId } = useParams();
+  const { studentId } = useParams();
   const navigate = useNavigate();
 
   const timeSlots = [
@@ -26,8 +27,8 @@ const AppointmentBooking = () => {
   const fetchAvailableSlots = async (doctorId, date) => {
     try {
       const response = await axios.get(`http://localhost:5000/api/doctor/available-slots/${doctorId}/${date}`);
-      setAvailableSlots(response.data.availableSlots); // Adjust response based on your API structure
-      setBookedSlots(response.data.bookedSlots); // Assuming API also returns booked slots
+      setAvailableSlots(response.data.availableSlots);
+      setBookedSlots(response.data.bookedSlots);
     } catch (error) {
       console.error('Error fetching available slots:', error);
     }
@@ -52,17 +53,17 @@ const AppointmentBooking = () => {
 
     try {
       await axios.post('http://localhost:5000/api/doctor/book-appointment', {
-        studentId, // Assuming studentId is being passed in URL
+        studentId,
         doctorId,
         date: selectedDate,
         timeSlot: selectedSlot
       });
 
       alert('Appointment booked successfully!');
-      navigate('/student-home'); // Redirect after booking
+      navigate('/student-home');
     } catch (error) {
       console.error('Error booking appointment:', error);
-      alert('Error booking appointment.');
+      alert('You have already booked a slot with this doctor on this date');
     }
   };
 
@@ -78,51 +79,57 @@ const AppointmentBooking = () => {
 
     fetchDoctorName();
   }, [doctorId]);
+  console.log(doctorName);
 
   const isSlotBooked = (slot) => bookedSlots?.includes(slot);
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h1>Book Appointment with {doctorName}</h1>
-      <label htmlFor="date">Select Date:</label>
-      <input
-        type="date"
-        id="date"
-        value={selectedDate}
-        onChange={handleDateChange}
-      />
+    <div className="main-container">
+      <div className="appointment-container">
+        <h1>Book Appointment </h1>
+        <label htmlFor="date">Select Date:</label>
+        <input
+          type="date"
+          id="date"
+          value={selectedDate}
+          onChange={handleDateChange}
+          className="date-picker"
+        />
 
-      {timeSlots.length > 0 ? (
-        <div>
-          <h2>Available Slots</h2>
-          {timeSlots.map((slot, index) => (
-            <button
-              key={index}
-              style={{ margin: '5px' }}
-              onClick={() => setSelectedSlot(slot)}
-              disabled={isSlotBooked(slot)} // Disable the button if the slot is booked
-            >
-              {slot} {isSlotBooked(slot) ? '(Booked)' : ''}
-            </button>
-          ))}
-        </div>
-      ) : (
-        <p>No available slots for the selected date.</p>
-      )}
+        {timeSlots.length > 0 ? (
+          <div className="slots-container">
+            <h2>Available Slots</h2>
+            <div className="time-slots">
+              {timeSlots.map((slot, index) => (
+                <button
+                  key={index}
+                  className={`slot-btn ${isSlotBooked(slot) ? 'booked' : 'available'}`}
+                  onClick={() => setSelectedSlot(slot)}
+                  disabled={isSlotBooked(slot)}
+                >
+                  {slot} {isSlotBooked(slot) ? '(Booked)' : ''}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <p>No available slots for the selected date.</p>
+        )}
 
-      {selectedSlot && (
-        <p style={{ marginTop: '20px', fontSize: '18px', color: 'green' }}>
-          Selected Slot: {selectedSlot}
-        </p>
-      )}
+        {selectedSlot && (
+          <p className="selected-slot">
+            Selected Slot: {selectedSlot}
+          </p>
+        )}
 
-      <button
-        style={{ marginTop: '20px' }}
-        onClick={handleBookAppointment}
-        disabled={!selectedSlot}
-      >
-        Confirm Appointment
-      </button>
+        <button
+          className="confirm-btn"
+          onClick={handleBookAppointment}
+          disabled={!selectedSlot}
+        >
+          Confirm Appointment
+        </button>
+      </div>
     </div>
   );
 };

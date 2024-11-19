@@ -12,8 +12,8 @@ const MedicalHistory = sequelize.define('MedicalHistory', {
         allowNull: false,
     },
     doctorName: {
-        type: DataTypes.TEXT,
-        allowNull: true,
+            type: DataTypes.TEXT,
+            allowNull: true,
     },
     entry: {
         type: DataTypes.TEXT,
@@ -26,6 +26,6 @@ const MedicalHistory = sequelize.define('MedicalHistory', {
 });
 
 // Define associations
-// MedicalHistory.belongsTo(User, { as: 'doctor', foreignKey: 'doctorId', targetKey: 'id' });
+// MedicalHistory.belongsTo(User, { foreignKey: 'doctorId', as: 'doctor' });
 
 module.exports = MedicalHistory;
